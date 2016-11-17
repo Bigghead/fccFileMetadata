@@ -15,7 +15,7 @@ app.get('/', function(req, res){
 });
 
 app.post('/getFile', function(req, res){
-  console.log(req.file);
+  console.log(req);
   var file = req.body.file;
   res.send(file);
 });
