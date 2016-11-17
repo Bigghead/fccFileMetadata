@@ -1,6 +1,9 @@
 var express = require('express'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
+    fileSize = require('filesize'),
+    multer = require('multer'),
+    upload = multer(),
     app = express();
 
 //setup body-parser
@@ -12,8 +15,9 @@ app.get('/', function(req, res){
 });
 
 app.post('/getFile', function(req, res){
-  console.log(req.body)
-  res.send('file');
+  console.log(req.file);
+  var file = req.body.file;
+  res.send(file);
 });
 
 
