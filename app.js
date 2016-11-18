@@ -5,19 +5,18 @@ var express = require('express'),
     app = express();
 
 //setup body-parser
-app.use(multer({dest:'./fileUpload/'}).single('fileInside'));
+// app.use(multer({dest:'./fileUpload/'}).single('fileInside'));
 
 app.set('view engine', 'ejs');
-
 
 
 app.get('/', function(req, res){
   res.render('index');
 });
 
-app.post('/getFile', function(req, res, next){
+app.post('/getFile', multer().single('fileInside'), function(req, res, next){
   console.log(req.file);
-  res.send('done');
+  res.json({fileSize : req.file.size});
 });
 
 
