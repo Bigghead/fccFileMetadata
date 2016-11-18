@@ -1,6 +1,5 @@
 var express = require('express'),
     mongoose = require('mongoose'),
-    fileSize = require('filesize'),
     multer = require('multer'),
     app = express();
 
