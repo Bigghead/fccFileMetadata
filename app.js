@@ -5,7 +5,7 @@ var express = require('express'),
     app = express();
 
 //setup body-parser
-var upload = multer({ dest: './getFile/' })
+app.use(multer({dest:'./fileUpload/'}).single('fileInside'));
 
 app.set('view engine', 'ejs');
 
@@ -15,8 +15,8 @@ app.get('/', function(req, res){
   res.render('index');
 });
 
-app.post('/getFile', upload.single('fileInside'), function(req, res, next){
-  console.log(req.body);
+app.post('/getFile', function(req, res, next){
+  console.log(req.file);
   res.send('done');
 });
 
